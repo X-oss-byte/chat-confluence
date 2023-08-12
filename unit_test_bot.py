@@ -12,10 +12,13 @@ if "console_text" not in st.session_state:
     st.session_state["console_text"] = ""
 
 def reset_col3(col3_place_holder):
-    col3_place_holder.markdown(f'''
+    col3_place_holder.markdown(
+        '''
 <div style="height:500px; overflow-y:scroll; border: 1px solid #e0e0e0; padding: 10px; border-radius: 5px;">
 </div>
-''', unsafe_allow_html=True) 
+''',
+        unsafe_allow_html=True,
+    ) 
     
 def reset_row2(row2_place_holder):
     row2_place_holder.markdown(f'''''')

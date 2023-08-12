@@ -46,8 +46,6 @@ def print_message_delta(delta, color_prefix_by_role=color_prefix_by_role, print_
     elif "content" in delta:
         content = delta["content"]
         print_function(content, end="")
-    else:
-        pass
 
 
 # example of a function that uses a multi-step prompt to write unit tests
@@ -146,7 +144,7 @@ To help unit test the function above, list diverse scenarios that the function s
     if elaboration_needed:
         elaboration_user_message = {
             "role": "user",
-            "content": f"""In addition to those scenarios above, list a few rare or unexpected edge cases (and as before, under each edge case, include a few examples as sub-bullets).""",
+            "content": """In addition to those scenarios above, list a few rare or unexpected edge cases (and as before, under each edge case, include a few examples as sub-bullets).""",
         }
         elaboration_messages = [
             explain_system_message,

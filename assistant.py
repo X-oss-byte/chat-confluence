@@ -25,8 +25,13 @@ def initiate_agent():
     retriever = db.as_retriever()
     llm = AzureChatOpenAI(deployment_name="chat-confluence-jp-0613", model_name="gpt-35-turbo-16k", verbose=True, openai_api_version="2023-03-15-preview")
     memory = ConversationBufferWindowMemory(memory_key="chat_history", k=10, return_messages=True)
-    qa = CustomConversationalRetrievalChain.from_llm(llm, retriever, return_source_documents=False, memory=memory, verbose=True)
-    return qa
+    return CustomConversationalRetrievalChain.from_llm(
+        llm,
+        retriever,
+        return_source_documents=False,
+        memory=memory,
+        verbose=True,
+    )
 
 from langchain.chains.conversational_retrieval.base import ConversationalRetrievalChain, _get_chat_history
 from typing import Dict, Any, Optional, List
