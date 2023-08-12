@@ -28,8 +28,7 @@ if "past" not in st.session_state:
     st.session_state["past"] = []
 
 def query(question):
-    response = st.session_state["chat"].ask_assistant(question)
-    return response
+    return st.session_state["chat"].ask_assistant(question)
 
 
 prompt = st.text_input("What do you want to know: ", "", key="input")
@@ -52,7 +51,7 @@ if st.button("Submit", key="generationSubmit"):
 if len(st.session_state["generated"]) > 0:
     for i in range(len(st.session_state["generated"]) - 1, -1, -1):
         message(st.session_state["generated"][i], key=str(i))
-        message(st.session_state["past"][i], is_user=True, key=str(i) + "_user")
+        message(st.session_state["past"][i], is_user=True, key=f"{str(i)}_user")
 
     with st.expander("See search results"):
         if ("latest_source_documents" in st.session_state):
